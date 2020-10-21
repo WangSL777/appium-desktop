@@ -70,9 +70,10 @@ export function xmlToJSON (source) {
   };
   const isIOS = source.includes('XCUIElement');
   const xmlDoc = new DOMParser().parseFromString(source);
-  const firstChild = childNodesOf(xmlDoc.documentElement)[0];
+  // const firstChild = childNodesOf(xmlDoc.documentElement)[0];
+  const rootElement = xmlDoc.documentElement;
 
-  return firstChild ? translateRecursively(firstChild) : {};
+  return rootElement ? translateRecursively(rootElement) : {};
 }
 
 /**
